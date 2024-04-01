@@ -16,6 +16,7 @@ import AppTextInput from "../components/AppTextInput";
 import { RootStackParamList } from "../../App";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome } from "@expo/vector-icons";
 import { INICIAR_SESION } from "../api/api_rest_login";
 
 export const LoginScreen = () => {
@@ -54,19 +55,10 @@ export const LoginScreen = () => {
             alignItems: "center",
           }}
         >
-          <Text
-            style={{
-              fontSize: FontSize.xLarge,
-              color: Colors.primary,
-              fontFamily: Font["poppins-bold"],
-              marginVertical: Spaciado * 3,
-            }}
-          >
-            <Image
-              source={require("../../assets/MVC.png")}
-              style={{ width: 150, height: 150 }}
-            />
-          </Text>
+          <Image
+            source={require("../../assets/MVC.png")}
+            style={{ width: 150, height: 150, padding: Spaciado * 10 }}
+          />
           <Text
             style={{
               fontFamily: Font["poppins-semiBold"],
@@ -172,9 +164,8 @@ export const LoginScreen = () => {
               fontSize: FontSize.small,
             }}
           >
-            Siguenos en nuestras redes sociales
+            Síguenos en nuestras redes sociales
           </Text>
-
           <View
             style={{
               marginTop: Spaciado,
@@ -185,27 +176,30 @@ export const LoginScreen = () => {
             <TouchableOpacity
               style={{
                 padding: Spaciado,
-                backgroundColor: Colors.gray,
                 borderRadius: Spaciado / 2,
                 marginHorizontal: Spaciado,
               }}
-            ></TouchableOpacity>
+            >
+              <FontAwesome name="facebook-square" size={24} color="black" />
+            </TouchableOpacity>
             <TouchableOpacity
               style={{
                 padding: Spaciado,
-                backgroundColor: Colors.gray,
                 borderRadius: Spaciado / 2,
                 marginHorizontal: Spaciado,
               }}
-            ></TouchableOpacity>
+            >
+              <FontAwesome name="instagram" size={24} color="black" />
+            </TouchableOpacity>
             <TouchableOpacity
               style={{
                 padding: Spaciado,
-                backgroundColor: Colors.gray,
                 borderRadius: Spaciado / 2,
                 marginHorizontal: Spaciado,
               }}
-            ></TouchableOpacity>
+            >
+              <FontAwesome name="youtube" size={24} color="black" />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
