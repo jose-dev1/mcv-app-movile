@@ -6,6 +6,7 @@ import { LoginScreen } from "./src/view/LoginScreen";
 import { PerfilScreen } from "./src/view/PerfilScreen";
 import { RegistroScreen } from "./src/view/RegistroScreen";
 
+
 export type RootStackParamList = {
   LoginScreen: undefined;
   RegistroScreen: undefined;
