@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -20,7 +20,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { INICIAR_SESION } from "../api/api_rest_login";
 
 export const LoginScreen = () => {
-  const [email, setEmail] = React.useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = React.useState("");
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -87,8 +87,7 @@ export const LoginScreen = () => {
           />
         </View>
 
-        <View>
-        </View>
+        <View></View>
         <TouchableOpacity
           onPress={onPressLogin}
           style={{
