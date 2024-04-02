@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LoginScreen } from "./src/view/LoginScreen";
 import { PerfilScreen } from "./src/view/PerfilScreen";
 
+
 export type RootStackParamList = {
   LoginScreen: undefined;
   Perfil: { correo_usuario: string };
