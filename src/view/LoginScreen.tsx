@@ -88,23 +88,6 @@ export const LoginScreen = () => {
         </View>
 
         <View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate()}
-            style={{
-              padding: Spaciado,
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: Font["poppins-semiBold"],
-                fontSize: FontSize.small,
-                color: Colors.primary,
-                alignSelf: "flex-end",
-              }}
-            >
-              Olvido la contraseña ?
-            </Text>
-          </TouchableOpacity>
         </View>
         <TouchableOpacity
           onPress={onPressLogin}
@@ -134,7 +117,7 @@ export const LoginScreen = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate()}
+          onPress={() => navigation.navigate("RegistroScreen")}
           style={{
             padding: Spaciado,
           }}
