@@ -9,8 +9,8 @@ export const INICIAR_SESION = async (data, callback) => {
     }).then(response => {
         if (response.data.success) {
             const { save } = LocalStorage()
-            save('user',JSON.stringify(response.data.user))
-            save('client',JSON.stringify(response.data.client))
+            save('user', JSON.stringify(response.data.user))
+            save('client', JSON.stringify(response.data.client))
             callback(response.data)
         }
     })

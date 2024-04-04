@@ -20,7 +20,6 @@ const AppTextInput: React.FC<TextInputProps> = ({ ...otherProps }) => {
       placeholderTextColor={Colors.darkText}
       style={[
         {
-          fontFamily: Font["poppins-regular"],
           fontSize: FontSize.small,
           padding: Spaciado * 2,
           backgroundColor: Colors.lightPrimary,
