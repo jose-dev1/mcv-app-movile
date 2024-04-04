@@ -20,10 +20,6 @@ export default function Perfil({navigation,route}:Props) {
             <Text>Cambiar contraseña</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.form}>
-            <Text>Eliminar cuenta</Text>
-        </TouchableOpacity>
-
     </View>
   );
 }
