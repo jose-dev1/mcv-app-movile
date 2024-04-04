@@ -30,7 +30,7 @@ export const LoginScreen = ({navigation,route}:Props) => {
     getItem('user').then((item)=>{
       const data = JSON.parse(item as any)
       if(data?.id_usuario !== null && data?.id_usuario !== undefined){
-        navigation.replace('Perfil',{correo_usuario:data.correo_usuario})
+        navigation.push('Perfil',{correo_usuario:data.correo_usuario})
       }
     })
   },[])
