@@ -3,7 +3,7 @@ import { LOCAL_HOST } from '@env'
 import { LocalStorage } from '../utils/LocalStorage';
 
 export const INICIAR_SESION = async (data, callback) => {
-    await axios.post(`http://192.168.230.6:4321/login`, {
+    await axios.post(`http://${LOCAL_HOST}:4321/login`, {
         userCorreo: data.correo,
         userPassword: data.pass,
     }).then(response => {
