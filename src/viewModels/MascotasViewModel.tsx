@@ -13,9 +13,7 @@ const MascotaViewModel = () => {
     })
     .then(
         (data:any)=>{
-          console.log("Data del cliente",data);
             const {verMascotas} = VerMascotas() 
-            console.log(verMascotas(data.id_cliente))
             return  verMascotas(data.id)
         }
 

@@ -5,7 +5,6 @@ export const VerMascotas = () => {
   const verMascotas = async (cliente_id) =>{
     try {
     const result =  await axios.get(`http://192.168.230.6:4321/info_mascotas/${cliente_id}`); 
-    console.log(cliente_id)
       return result.data
 
     } catch (error) {
