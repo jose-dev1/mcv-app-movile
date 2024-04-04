@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ImageSourcePropType } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 interface PetCardProps {
   name: string;
@@ -7,18 +10,38 @@ interface PetCardProps {
   age: number;
   photo: string;
   onPressVaccines: () => void;
+  onPressHospitalizationCertificates: () => void;
 }
 
-const PetCard = ({ name, species, age, photo, onPressVaccines }:PetCardProps) => {
+const PetCard = ({
+  name,
+  species,
+  age,
+  photo,
+  onPressVaccines,
+  onPressHospitalizationCertificates,
+}: PetCardProps) => {
   return (
     <View style={styles.card}>
       <Image source={{ uri: photo }} style={styles.image} />
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.text}>Especie: {species}</Text>
       <Text style={styles.text}>Edad: {age} años</Text>
-      <TouchableOpacity style={styles.button} onPress={onPressVaccines}>
-        <Text style={styles.buttonText}>Ver Vacunas</Text>
-      </TouchableOpacity>
+
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity style={styles.button} onPress={onPressVaccines}>
+          <MaterialIcons name="vaccines" size={24} color="white" />
+          <Text style={styles.buttonText}>Vacunas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={onPressHospitalizationCertificates}>
+          <FontAwesome5 name="hospital-alt" size={24} color="white" />
+          <Text style={styles.buttonText}>Ingresos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={onPressHospitalizationCertificates}>
+          <Ionicons name="document-attach" size={24} color="white" />
+          <Text style={styles.buttonText}>Servicios</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -56,17 +79,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 5,
   },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   button: {
     backgroundColor: '#3a0ca3',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
     alignItems: 'center',
-    marginTop: 10,
+    flex: 2,
+    marginHorizontal: 2,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 10,
     fontWeight: 'bold',
   },
 });
