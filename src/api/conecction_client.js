@@ -17,7 +17,18 @@ export const ConectionClient = () => {
     }
   }
 
+  const clear = async(correo) =>{
+    try {
+      await axios.put(`http://${LOCAL_HOST}:4321/registro/desactivar`,{correo})
+      return ('La cuenta ha sido desactivada correctamente')
+    } catch (error) {
+      console.log('Error al eliminar' + error)
+      throw error; 
+    }
+  }
+
   return {
-    update
+    update,
+    clear
   }
 }
