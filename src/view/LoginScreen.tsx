@@ -43,7 +43,6 @@ export const LoginScreen = ({navigation,route}:Props) => {
           pass: password,
         },
         (response: any) => {
-          console.log(response);
           navigation.navigate("Perfil", {
             correo_usuario: response.user.correo_usuario,
           });

@@ -7,37 +7,36 @@ import { Ionicons } from '@expo/vector-icons';
 interface PetCardProps {
   name: string;
   species: string;
-  age: number;
   photo: string;
   onPressVaccines: () => void;
   onPressHospitalizationCertificates: () => void;
 }
 
-const PetCard = ({
-  name,
-  species,
-  age,
-  photo,
-  onPressVaccines,
-  onPressHospitalizationCertificates,
-}: PetCardProps) => {
+const PetCard: React.FC<PetCardProps> = ({ name, species, photo, onPressVaccines, onPressHospitalizationCertificates }) => {
+  const handleVaccinePress = () => {
+    onPressVaccines(); // Llama a la función onPressVaccines proporcionada por el componente padre
+  };
+
+  const handleHospitalizationCertificatesPress = () => {
+    onPressHospitalizationCertificates(); // Llama a la función onPressHospitalizationCertificates proporcionada por el componente padre
+  };
+
   return (
     <View style={styles.card}>
       <Image source={{ uri: photo }} style={styles.image} />
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.text}>Especie: {species}</Text>
-      <Text style={styles.text}>Edad: {age} años</Text>
 
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button} onPress={onPressVaccines}>
+        <TouchableOpacity style={styles.button} onPress={handleVaccinePress}>
           <MaterialIcons name="vaccines" size={24} color="white" />
           <Text style={styles.buttonText}>Vacunas</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={onPressHospitalizationCertificates}>
+        <TouchableOpacity style={styles.button} onPress={handleHospitalizationCertificatesPress}>
           <FontAwesome5 name="hospital-alt" size={24} color="white" />
           <Text style={styles.buttonText}>Ingresos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={onPressHospitalizationCertificates}>
+        <TouchableOpacity style={styles.button} onPress={handleHospitalizationCertificatesPress}>
           <Ionicons name="document-attach" size={24} color="white" />
           <Text style={styles.buttonText}>Servicios</Text>
         </TouchableOpacity>
