@@ -27,8 +27,19 @@ export const ConectionClient = () => {
     }
   }
 
+  const updatePassword = async(correo,values) =>{
+    try {
+      await axios.patch(`http://${LOCAL_HOST}:4321/registro/actualizarPassword/${correo}`,values)
+      return ('Contraseña actualizada correctamente')
+    } catch (error) {
+      console.log('Error al actualizar' + error)
+      throw error; 
+    }
+  }
+
   return {
     update,
-    clear
+    clear,
+    updatePassword
   }
 }

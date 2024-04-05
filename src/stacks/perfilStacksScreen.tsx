@@ -3,11 +3,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Perfil from "../view/PerfilUserScreen";
 import Actualizar from "../view/ActualizarScreen";
 import RegistroCliente from "../view/RegistroClienteScreen";
+import Password from '../view/PasswordScreen';
+
 
 export type PerfilStackParamList = {
   Perfil: undefined;
   Actualizar: undefined;
   RegistroCliente: undefined;
+  Password: undefined;
 };
 
 const PerfilStack = createNativeStackNavigator<PerfilStackParamList>();
@@ -36,6 +39,14 @@ const PerfilStackScreen = () => {
           title: "Completar Registro",
         }}
       />
+      <PerfilStack.Screen 
+          name='Password' 
+          component={Password}
+          options={{
+            headerShown:true,
+            title:'Actualizar Contarseña',
+            }}  
+        />
     </PerfilStack.Navigator>
   );
 };
