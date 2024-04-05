@@ -10,15 +10,20 @@ interface PetCardProps {
   photo: string;
   onPressVaccines: () => void;
   onPressHospitalizationCertificates: () => void;
+  onPressServices: () => void;
 }
 
-const PetCard: React.FC<PetCardProps> = ({ name, species, photo, onPressVaccines, onPressHospitalizationCertificates }) => {
+const PetCard: React.FC<PetCardProps> = ({ name, species, photo, onPressVaccines, onPressHospitalizationCertificates,onPressServices }) => {
   const handleVaccinePress = () => {
     onPressVaccines(); // Llama a la función onPressVaccines proporcionada por el componente padre
   };
 
   const handleHospitalizationCertificatesPress = () => {
     onPressHospitalizationCertificates(); // Llama a la función onPressHospitalizationCertificates proporcionada por el componente padre
+  };
+
+  const handleServicesPress = () => {
+    onPressServices();
   };
 
   return (
@@ -36,7 +41,7 @@ const PetCard: React.FC<PetCardProps> = ({ name, species, photo, onPressVaccines
           <FontAwesome5 name="hospital-alt" size={24} color="white" />
           <Text style={styles.buttonText}>Ingresos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleHospitalizationCertificatesPress}>
+        <TouchableOpacity style={styles.button} onPress={handleServicesPress}>
           <Ionicons name="document-attach" size={24} color="white" />
           <Text style={styles.buttonText}>Servicios</Text>
         </TouchableOpacity>
