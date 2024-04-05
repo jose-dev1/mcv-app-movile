@@ -22,10 +22,9 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ onGenreChange }) => {
   useEffect(() => {
     const fetchGenres = async () => {
       try {
-        const response = await axios.get(
-          "http://192.168.0.11:4321/registro/genero"
-        );
-        setGenres(response.data);
+        const response = await ConectionData();
+        const genero = response.dataGenero();
+        setGenres(await genero);
       } catch (error) {
         console.log(error);
       }

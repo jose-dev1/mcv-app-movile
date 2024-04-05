@@ -4,7 +4,7 @@ import RNPickerSelect from "react-native-picker-select";
 import Spaciado from "../utils/Spaciado";
 import Colors from "../utils/colores";
 import FontSize from "../utils/FontSize";
-import { ConectionData } from "../api/api_rest_datos";
+import { DataTypeDoc } from "../api/api_rest_datos";
 import axios from "axios";
 
 interface CustomSelectProps {
@@ -25,10 +25,9 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   useEffect(() => {
     const fetchDocumentTypes = async () => {
       try {
-        const response = await axios.get(
-          "http://192.168.0.11:4321/registro/documento"
-        );
-        setDocumentTypes(response.data);
+        const response = await DataTypeDoc();
+        const documentosTypes = response.dataDoc();
+        setDocumentTypes(await documentosTypes);
       } catch (error) {
         console.log(error);
       }
