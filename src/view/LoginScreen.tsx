@@ -70,6 +70,7 @@ export const LoginScreen = ({ navigation, route }: Props) => {
           />
           <Text
             style={{
+              // fontFamily: Font["poppins-semiBold"],
               fontSize: FontSize.large,
               color: Colors.darkText,
               maxWidth: "60%",
@@ -114,6 +115,7 @@ export const LoginScreen = ({ navigation, route }: Props) => {
         >
           <Text
             style={{
+              // fontFamily: Font["poppins-bold"],
               color: Colors.onPrimary,
               textAlign: "center",
               fontSize: FontSize.large,
@@ -130,6 +132,7 @@ export const LoginScreen = ({ navigation, route }: Props) => {
         >
           <Text
             style={{
+              // fontFamily: Font["poppins-semiBold"],
               color: Colors.text,
               textAlign: "center",
               fontSize: FontSize.small,
@@ -146,6 +149,7 @@ export const LoginScreen = ({ navigation, route }: Props) => {
         >
           <Text
             style={{
+              // fontFamily: Font["poppins-semiBold"],
               color: Colors.primary,
               textAlign: "center",
               fontSize: FontSize.small,
