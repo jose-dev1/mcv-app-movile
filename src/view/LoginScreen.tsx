@@ -19,21 +19,21 @@ import { FontAwesome } from "@expo/vector-icons";
 import { INICIAR_SESION } from "../api/api_rest_login";
 import { LocalStorage } from "../utils/LocalStorage";
 
-interface Props extends StackScreenProps<RootStackParamList,'LoginScreen'> { }
+interface Props extends StackScreenProps<RootStackParamList, "LoginScreen"> {}
 
-export const LoginScreen = ({navigation,route}:Props) => {
+export const LoginScreen = ({ navigation, route }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(()=>{
-    const {getItem} = LocalStorage()
-    getItem('user').then((item)=>{
-      const data = JSON.parse(item as any)
-      if(data?.id_usuario !== null && data?.id_usuario !== undefined){
-        navigation.push('Perfil',{correo_usuario:data.correo_usuario})
+  useEffect(() => {
+    const { getItem } = LocalStorage();
+    getItem("user").then((item) => {
+      const data = JSON.parse(item as any);
+      if (data?.id_usuario !== null && data?.id_usuario !== undefined) {
+        navigation.push("Perfil", { correo_usuario: data.correo_usuario });
       }
-    })
-  },[])
+    });
+  }, []);
 
   const onPressLogin = async () => {
     if (email != "" && password != "") {
@@ -70,7 +70,6 @@ export const LoginScreen = ({navigation,route}:Props) => {
           />
           <Text
             style={{
-              fontFamily: Font["poppins-semiBold"],
               fontSize: FontSize.large,
               color: Colors.darkText,
               maxWidth: "60%",
@@ -86,11 +85,11 @@ export const LoginScreen = ({navigation,route}:Props) => {
           }}
         >
           <AppTextInput
-            onChangeText={(value:string) => setEmail(value)}
+            onChangeText={(value: string) => setEmail(value)}
             placeholder="Email"
           />
           <AppTextInput
-            onChangeText={(value:string) => setPassword(value)}
+            onChangeText={(value: string) => setPassword(value)}
             secureTextEntry
             placeholder="Password"
           />
@@ -115,7 +114,6 @@ export const LoginScreen = ({navigation,route}:Props) => {
         >
           <Text
             style={{
-              fontFamily: Font["poppins-bold"],
               color: Colors.onPrimary,
               textAlign: "center",
               fontSize: FontSize.large,
@@ -132,7 +130,6 @@ export const LoginScreen = ({navigation,route}:Props) => {
         >
           <Text
             style={{
-              fontFamily: Font["poppins-semiBold"],
               color: Colors.text,
               textAlign: "center",
               fontSize: FontSize.small,
@@ -149,7 +146,6 @@ export const LoginScreen = ({navigation,route}:Props) => {
         >
           <Text
             style={{
-              fontFamily: Font["poppins-semiBold"],
               color: Colors.primary,
               textAlign: "center",
               fontSize: FontSize.small,
