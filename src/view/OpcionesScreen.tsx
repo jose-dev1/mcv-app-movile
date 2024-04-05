@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, TouchableOpacity,ToastAndroid } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity,ToastAndroid,Linking } from 'react-native';
 import { StackScreenProps } from "@react-navigation/stack";
 import {OpcionesStackParamList} from '../stacks/opcionesStacksScreen'
 import { LocalStorage } from '../utils/LocalStorage';
@@ -13,11 +13,27 @@ export default function Opciones({navigation,route}:Props) {
   const [isVisible, setIsVisible] = useState(false);
   const {Eliminar} = EliminarViewModel()
 
+  const handlePress = () => {
+    const phoneNumber = '573108543246';
+    const message = 'Hola, me gustaría obtener información sobre los servicios veterinarios que ofrecen. ¿Podrían ayudarme con eso?';
+    const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    Linking.openURL(whatsappUrl)
+      .then((data) => {
+        ToastAndroid.show('WhatsApp abierto',ToastAndroid.SHORT);
+      })
+      .catch(() => {
+        ToastAndroid.show('Por favor, asegúrate de tener instalada la aplicación de WhatsApp en tu dispositivo.',ToastAndroid.SHORT);
+      });
+  };
+
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
   return (
     <View style={styles.container}>
+        <TouchableOpacity style={styles.form} onPress={handlePress}>
+          <Text>Contactanos</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.form} onPress={async() =>
           {
             const {remove} = LocalStorage()
