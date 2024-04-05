@@ -21,14 +21,14 @@ export default function Home({navigation,route}:Props) {
         <Text style={styles.subtitle}>¡Cuida a tus mascotas como se merecen!</Text>
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-      {values.map((pet: { id_historia_clinica:string, nombre_mascota: string; raza_mascota: string }, index: number) => (
+      {values.map((pet: {id: string, id_historia_clinica:string, nombre_mascota: string; raza_mascota: string }, index: number) => (
   <View style={styles.section} key={index}>
     <PetCard
       name={pet.nombre_mascota}
       species={pet.raza_mascota}
       photo='https://img.freepik.com/foto-gratis/lindo-mascota-collage-aislado_23-2150007407.jpg'
       onPressVaccines={handleVaccinePress}
-      onPressHospitalizationCertificates={()=>navigation.navigate('Hospitalizaciones')} // Agrega esta línea
+      onPressHospitalizationCertificates={()=>navigation.navigate('Hospitalizaciones',{idMascota:pet.id})} // Agrega esta línea
       onPressServices={()=>navigation.navigate('Servicios',{idMascota:pet.id_historia_clinica})}
     />
   </View>

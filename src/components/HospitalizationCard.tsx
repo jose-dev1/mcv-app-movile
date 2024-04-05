@@ -3,26 +3,26 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 interface PetCardProps {
-  clientName: string
-  petName: string;
-  phoneNumber: string;
-  addmisionDate: string;
-  exitDate: string;
-  serviceCompleted: boolean;
-  observations: string
+  primer_nombre_cliente: string
+  nombre_mascota: string;
+  telefono_cliente: string;
+  fecha_hospitalizacion: string;
+  fecha_salida_hospitalizacion: string;
+  servicio_finalizado_hospitalizacion: number;
+  contenido_hospitalizacion: string
 }
 
 
-const HospitalizationCard = ({ clientName, petName, phoneNumber, addmisionDate, exitDate, serviceCompleted, observations}: PetCardProps) => {
+const HospitalizationCard = ({ primer_nombre_cliente, nombre_mascota, telefono_cliente, fecha_hospitalizacion, fecha_salida_hospitalizacion, servicio_finalizado_hospitalizacion, contenido_hospitalizacion}: PetCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>Mascota: {petName}</Text>
-      <Text style={styles.text}>Dueno: {clientName}</Text>
-      <Text style={styles.text}>Telefono dueno: {phoneNumber}</Text>
-      <Text style={styles.text}>Fecha ingreso: {addmisionDate}</Text>
-      <Text style={styles.text}>Fecha Salida: {exitDate}</Text>
-      <Text style={styles.text}>Servicio Finalizado: {serviceCompleted ? 'si': 'no'}</Text>
+      <Text style={styles.title}>Mascota: {nombre_mascota}</Text>
+      <Text style={styles.text}>Dueno: {primer_nombre_cliente}</Text>
+      <Text style={styles.text}>Telefono dueno: {telefono_cliente}</Text>
+      <Text style={styles.text}>Fecha ingreso: {fecha_hospitalizacion?.split('T')[0]}</Text>
+      <Text style={styles.text}>Fecha Salida: {fecha_salida_hospitalizacion?.split('T')[0]}</Text>
+      <Text style={styles.text}>Servicio Finalizado: {servicio_finalizado_hospitalizacion === 1 ? 'si': 'no'}</Text>
 
       <TouchableOpacity style={styles.formotuchable}  onPress={()=> setIsVisible(!isVisible)}>
             <Text>Obcervaciones</Text>
@@ -33,7 +33,7 @@ const HospitalizationCard = ({ clientName, petName, phoneNumber, addmisionDate, 
         {isVisible && (
           <View style={styles.form}>
             <View style={styles.contenttext}>
-              <Text style={styles.text}>{observations}</Text>
+              <Text style={styles.text}>{contenido_hospitalizacion}</Text>
             </View>
           </View>
         )}

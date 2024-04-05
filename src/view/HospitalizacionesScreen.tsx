@@ -1,62 +1,49 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import HospitalizationCard from '../components/HospitalizationCard';
+import { VerHospitalizaciones } from '../api/get_hosspitalizaciones';
+import { StackScreenProps } from '@react-navigation/stack';
+import { HomeStackParamList } from '../stacks/homeStacksScreen';
 
 interface hospitalization{
-  clientName: string,
-  petName: string;
-  phoneNumber: string;
-  addmisionDate: string;
-  exitDate: string;
-  serviceCompleted: boolean;
-  observations: string
+  primer_nombre_cliente: string,
+  nombre_mascota: string;
+  telefono_cliente: string;
+  fecha_hospitalizacion: string;
+  fecha_salida_hospitalizacion: string;
+  servicio_finalizado_hospitalizacion: number;
+  contenido_hospitalizacion: string
 }
 
-const HospitalizacionesScreen = () => {
-  const [hospitalizations, setHospitalizations] = useState<hospitalization[]>([
-    {
-      clientName:"miguel",
-      petName:"juan",
-      phoneNumber:"2345678997",
-      addmisionDate:"2024-03-04",
-      exitDate:"2024-03-05",
-      serviceCompleted: true,
-      observations: 'hola como estas manolo'
-    },
-    {
-      clientName:"Luna",
-      petName:"fredy",
-      phoneNumber:"5676849783",
-      addmisionDate:"2024-03-04",
-      exitDate:"2024-03-05",
-      serviceCompleted:true,
-      observations: 'hola como estas manolito'
-    },
-    {
-      clientName:"Luna",
-      petName:"fredy",
-      phoneNumber:"5676849783",
-      addmisionDate:"2024-03-04",
-      exitDate:"2024-03-05",
-      serviceCompleted:true,
-      observations: 'hola como estas manolito'
-    }
-  ]);
+interface Props extends StackScreenProps<HomeStackParamList,'Servicios'> { }
+
+const HospitalizacionesScreen = ({navigation,route}:Props) => {
+  const [hospitalizations, setHospitalizations] = useState<hospitalization[]>([]);
+
+  useEffect(()=>{
+    const {verHospitalizaciones} = VerHospitalizaciones()
+    const { idMascota } = route.params
+    verHospitalizaciones(idMascota).then((result) => {
+      console.log(result)
+      setHospitalizations(result)
+    })
+  },[])
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>hospitalizaciones de {hospitalizations[0].petName}</Text>
+          <Text style={styles.sectionTitle}>hospitalizaciones</Text>
           {hospitalizations.map((pet, index) => (
             <HospitalizationCard
               key={index}
-              clientName={pet.clientName}
-              petName={pet.petName}
-              phoneNumber={pet.phoneNumber}
-              addmisionDate={pet.addmisionDate}
-              exitDate={pet.exitDate}
-              serviceCompleted={pet.serviceCompleted}
-              observations={pet.observations}
+              primer_nombre_cliente={pet.primer_nombre_cliente}
+              nombre_mascota={pet.nombre_mascota}
+              telefono_cliente={pet.telefono_cliente}
+              fecha_hospitalizacion={pet.fecha_hospitalizacion}
+              fecha_salida_hospitalizacion={pet.fecha_salida_hospitalizacion}
+              servicio_finalizado_hospitalizacion={pet.servicio_finalizado_hospitalizacion}
+              contenido_hospitalizacion={pet.contenido_hospitalizacion}
             />
           ))}
         </View>

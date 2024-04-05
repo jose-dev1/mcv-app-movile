@@ -6,8 +6,8 @@ import ServiciosScreen from '../view/ServiciosScreen';
 
 export type HomeStackParamList = {
   Home: undefined;
-  Hospitalizaciones: undefined
-  Servicios:{idMascota:string}
+  Hospitalizaciones: {idMascota: string};
+  Servicios:{idMascota:string};
 }
 
 const HomeStack = createNativeStackNavigator <HomeStackParamList>()
@@ -26,7 +26,7 @@ const HomeStackScreen = () => {
           component={HospitalizacionesScreen}
           options={{
             headerShown:true,
-            title:'Home',
+            title:'Hospitalizaciones',
             }}  
         />
         <HomeStack.Screen 
