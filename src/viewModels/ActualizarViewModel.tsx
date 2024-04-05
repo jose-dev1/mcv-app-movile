@@ -40,7 +40,8 @@ const ActualizarViewModel = () => {
         console.error("Ocurrió un error al actualizar los datos del cliente:", error);
         throw error;
     }
-    }
+  }
+    return 0
   }
 
   const isValidForm = ():boolean => {
@@ -51,6 +52,7 @@ const ActualizarViewModel = () => {
 
     if(values.primer_apellido_cliente===""){
       setErrorMessage('El primer apellido es requerido')
+      return false
     }
 
     if(values.id_tipo_documento===''){
@@ -60,18 +62,22 @@ const ActualizarViewModel = () => {
 
     if(values.numero_documento_cliente===''){
       setErrorMessage('El numero de documento es requerido')
+      return false
     }
 
     if(values.lugar_expedicion_documento===''){
       setErrorMessage('El lugar de expedicion del documento es requerido')
+      return false
     }
 
     if(values.direccion_cliente===''){
       setErrorMessage('La direccion es requerida')
+      return false
     }
 
     if(values.telefono_cliente===''){
       setErrorMessage('El telefono es requerido')
+      return false
     }
 
     return true

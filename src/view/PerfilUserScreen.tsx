@@ -25,8 +25,8 @@ export default function Perfil({ navigation, route }: Props) {
         <Text>Completar Registro</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.form}>
-        <Text>Cambiar contraseña</Text>
+      <TouchableOpacity style={styles.form} onPress={() => navigation.navigate('Password')}>
+            <Text>Cambiar contraseña</Text>
       </TouchableOpacity>
     </View>
   );

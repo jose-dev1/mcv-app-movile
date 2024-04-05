@@ -4,15 +4,15 @@ import AppTextInput from "../components/AppTextInput";
 import ActualizarViewModel from '../viewModels/ActualizarViewModel';
 import { StackScreenProps } from "@react-navigation/stack";
 import { PerfilStackParamList } from '../stacks/perfilStacksScreen';
+import CustomSelect from "../components/AppSelectDoc";
 
 interface Props extends StackScreenProps<PerfilStackParamList,'Actualizar'> { }
 
 export default function Actualizar({navigation,route}:Props) {
   const {primer_nombre_cliente,segundo_nombre_cliente,primer_apellido_cliente,segundo_apeliido_cliente,id_tipo_documento,numero_documento_cliente, lugar_expedicion_documento,direccion_cliente,telefono_cliente, errorMessage ,onChange,actualizar} = ActualizarViewModel()
-
   useEffect(()=>{
     if(errorMessage !== ''){
-      ToastAndroid.show(errorMessage, ToastAndroid.LONG)
+      ToastAndroid.show(errorMessage as any, ToastAndroid.LONG)
     }
   },[errorMessage])
 
@@ -44,11 +44,8 @@ export default function Actualizar({navigation,route}:Props) {
             onChangeText={text => onChange('segundo_apeliido_cliente',text)}
             keyboardType='default' 
           />
-          <AppTextInput
-            placeholder="Tipo Documento"
-            value={id_tipo_documento} 
-            onChangeText={text => onChange('id_tipo_documento',text)} 
-            keyboardType='default'
+          <CustomSelect
+            onDocumentTypeChange={(text:any) => onChange("id_tipo_documento", text)}
           />
           <AppTextInput
             placeholder="Numero Documento"
@@ -77,8 +74,9 @@ export default function Actualizar({navigation,route}:Props) {
           <TouchableOpacity style={styles.button} onPress={async ()=>{
             const response = await actualizar()
             if(actualizar() instanceof Error){
-              ToastAndroid.show(response as any, ToastAndroid.LONG)
-            }else{
+               return ToastAndroid.show(response as any, ToastAndroid.LONG)
+            }
+            if(response !== 0){
               ToastAndroid.show(response as any, ToastAndroid.LONG)
               ToastAndroid.show('Para visualizar los cambios inicie sesión nuevamente', ToastAndroid.LONG)
               navigation.navigate('Perfil')
