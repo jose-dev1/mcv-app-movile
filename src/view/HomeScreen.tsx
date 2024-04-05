@@ -3,16 +3,17 @@ import { View, StyleSheet, ScrollView, Text, Alert } from 'react-native';
 import PetCard from '../components/PetCard';
 import { LocalStorage } from '../utils/LocalStorage';
 import MascotaViewModel from '../viewModels/MascotasViewModel';
+import { StackScreenProps } from '@react-navigation/stack';
+import { HomeStackParamList } from '../stacks/homeStacksScreen';
 
-export default function Home() {
+interface Props extends StackScreenProps<HomeStackParamList,'Home'> { }
+
+export default function Home({navigation,route}:Props) {
   const { values } = MascotaViewModel();
   const handleVaccinePress = () => {
     console.log('lógica de vacuna');
   };
 
-  const handleHospitalizationCertificatesPress = () => {
-    console.log('boton hospitalizaciones')
-  }
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -27,7 +28,7 @@ export default function Home() {
       species={pet.raza_mascota}
       photo='https://img.freepik.com/foto-gratis/lindo-mascota-collage-aislado_23-2150007407.jpg'
       onPressVaccines={handleVaccinePress}
-      onPressHospitalizationCertificates={handleHospitalizationCertificatesPress} // Agrega esta línea
+      onPressHospitalizationCertificates={()=>navigation.navigate('Hospitalizaciones')} // Agrega esta línea
     />
   </View>
 ))}
