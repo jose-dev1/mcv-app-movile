@@ -7,7 +7,6 @@ import { HomeStackParamList } from '../stacks/homeStacksScreen';
 
 interface hospitalization{
   primer_nombre_cliente: string,
-  nombre_mascota: string;
   telefono_cliente: string;
   fecha_hospitalizacion: string;
   fecha_salida_hospitalizacion: string;
@@ -33,12 +32,10 @@ const HospitalizacionesScreen = ({navigation,route}:Props) => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>hospitalizaciones</Text>
           {hospitalizations.map((pet, index) => (
             <HospitalizationCard
               key={index}
               primer_nombre_cliente={pet.primer_nombre_cliente}
-              nombre_mascota={pet.nombre_mascota}
               telefono_cliente={pet.telefono_cliente}
               fecha_hospitalizacion={pet.fecha_hospitalizacion}
               fecha_salida_hospitalizacion={pet.fecha_salida_hospitalizacion}

@@ -4,7 +4,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 interface PetCardProps {
   primer_nombre_cliente: string
-  nombre_mascota: string;
   telefono_cliente: string;
   fecha_hospitalizacion: string;
   fecha_salida_hospitalizacion: string;
@@ -13,19 +12,18 @@ interface PetCardProps {
 }
 
 
-const HospitalizationCard = ({ primer_nombre_cliente, nombre_mascota, telefono_cliente, fecha_hospitalizacion, fecha_salida_hospitalizacion, servicio_finalizado_hospitalizacion, contenido_hospitalizacion}: PetCardProps) => {
+const HospitalizationCard = ({ primer_nombre_cliente, telefono_cliente, fecha_hospitalizacion, fecha_salida_hospitalizacion, servicio_finalizado_hospitalizacion, contenido_hospitalizacion}: PetCardProps) => {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>Mascota: {nombre_mascota}</Text>
-      <Text style={styles.text}>Dueno: {primer_nombre_cliente}</Text>
-      <Text style={styles.text}>Telefono dueno: {telefono_cliente}</Text>
+      <Text style={styles.title}>Dueño: {primer_nombre_cliente}</Text>
+      <Text style={styles.text}>Telefono dueño: {telefono_cliente}</Text>
       <Text style={styles.text}>Fecha ingreso: {fecha_hospitalizacion?.split('T')[0]}</Text>
       <Text style={styles.text}>Fecha Salida: {fecha_salida_hospitalizacion?.split('T')[0]}</Text>
       <Text style={styles.text}>Servicio Finalizado: {servicio_finalizado_hospitalizacion === 1 ? 'si': 'no'}</Text>
 
       <TouchableOpacity style={styles.formotuchable}  onPress={()=> setIsVisible(!isVisible)}>
-            <Text>Obcervaciones</Text>
+            <Text>Observaciones</Text>
             {isVisible ? (
               <MaterialIcons name="keyboard-arrow-up" size={24}/>
             ):<MaterialIcons name="keyboard-arrow-down" size={24}/>}
