@@ -10,9 +10,7 @@ interface Props extends StackScreenProps<HomeStackParamList,'Home'> { }
 
 export default function Home({navigation,route}:Props) {
   const { values } = MascotaViewModel();
-  const handleVaccinePress = () => {
-    console.log('lógica de vacuna');
-  };
+
 
   return (
     <View style={styles.container}>
@@ -22,13 +20,13 @@ export default function Home({navigation,route}:Props) {
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
       {values.map((pet: {id: string, id_historia_clinica:string, nombre_mascota: string; raza_mascota: string }, index: number) => (
-  <View style={styles.section} key={index}>
+  <View s tyle={styles.section} key={index}>
     <PetCard
       name={pet.nombre_mascota}
       species={pet.raza_mascota}
       photo='https://img.freepik.com/foto-gratis/lindo-mascota-collage-aislado_23-2150007407.jpg'
-      onPressVaccines={handleVaccinePress}
-      onPressHospitalizationCertificates={()=>navigation.navigate('Hospitalizaciones',{idMascota:pet.id})} // Agrega esta línea
+      onPressVaccines={()=>navigation.navigate('Vacunas',{idMascota:pet.id})}
+      onPressHospitalizationCertificates={()=>navigation.navigate('Hospitalizaciones',{idMascota:pet.id})} 
       onPressServices={()=>navigation.navigate('Servicios',{idMascota:pet.id_historia_clinica})}
     />
   </View>
@@ -38,6 +36,7 @@ export default function Home({navigation,route}:Props) {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
