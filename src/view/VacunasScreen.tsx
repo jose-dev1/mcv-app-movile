@@ -28,7 +28,7 @@ const Vacunas: React.FC<Props> = ({ navigation, route }: Props) => {
     const { verVacunas } = VerVacunsApi()
     const idMascota = route.params.idMascota;
     verVacunas(idMascota).then((item: Vacuna[]) => { 
-      setVacunas(item);
+      setVacunas(item ? item : []);
     });
   }, []);
 

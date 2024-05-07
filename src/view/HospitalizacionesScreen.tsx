@@ -23,8 +23,7 @@ const HospitalizacionesScreen = ({navigation,route}:Props) => {
     const {verHospitalizaciones} = VerHospitalizaciones()
     const { idMascota } = route.params
     verHospitalizaciones(idMascota).then((result) => {
-      console.log(result)
-      setHospitalizations(result)
+      setHospitalizations(result? result:[])
     })
   },[])
 

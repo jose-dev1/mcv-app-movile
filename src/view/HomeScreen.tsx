@@ -20,7 +20,7 @@ export default function Home({navigation,route}:Props) {
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
       {values.map((pet: {id: string, id_historia_clinica:string, nombre_mascota: string; raza_mascota: string }, index: number) => (
-  <View s tyle={styles.section} key={index}>
+  <View style={styles.section} key={index}>
     <PetCard
       name={pet.nombre_mascota}
       species={pet.raza_mascota}

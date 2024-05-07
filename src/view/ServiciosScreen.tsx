@@ -14,7 +14,7 @@ const ServiciosScreen = ({navigation,route}:Props) => {
     const {getServices} = ConectionServices()
     const {idMascota} = route.params
     getServices(idMascota).then((item)=>{
-      setServices(item)
+      setServices(item ? item : [])
     })
   },[])
 

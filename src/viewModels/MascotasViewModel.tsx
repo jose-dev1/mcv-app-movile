@@ -18,7 +18,7 @@ const MascotaViewModel = () => {
         }
 
     )
-    .then((response:any)=>setValues(response))
+    .then((response:any)=>setValues(response? response : []))
   },[])
 
   const [values, setValues] = useState(
