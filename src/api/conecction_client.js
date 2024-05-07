@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { LOCAL_HOST } from '@env'
+import { AXIOS } from './api_connection';
 
 export const ConectionClient = () => {
   const update = async (value, correo, password) => {
     try {
       delete value.id_usuario
-      await axios.put(`http://${LOCAL_HOST}:4321/registro/actualizar_cliente/${value.id_cliente}`, {
+      await AXIOS.put(`/registro/actualizar_cliente/${value.id_cliente}`, {
         correo_usuario: correo,
         contraseña: password,
         ...value
@@ -19,7 +20,7 @@ export const ConectionClient = () => {
 
   const clear = async(correo) =>{
     try {
-      await axios.put(`http://${LOCAL_HOST}:4321/registro/desactivar`,{correo})
+      await AXIOS.put(`/registro/desactivar`,{correo})
       return ('La cuenta ha sido desactivada correctamente')
     } catch (error) {
       console.log('Error al eliminar' + error)
@@ -29,7 +30,7 @@ export const ConectionClient = () => {
 
   const updatePassword = async(correo,values) =>{
     try {
-      await axios.patch(`http://${LOCAL_HOST}:4321/registro/actualizarPassword/${correo}`,values)
+      await AXIOS.patch(`/registro/actualizarPassword/${correo}`,values)
       return ('Contraseña actualizada correctamente')
     } catch (error) {
       console.log('Error al actualizar' + error)

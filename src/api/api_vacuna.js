@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { LOCAL_HOST } from '@env'
+import { AXIOS } from './api_connection';
 
 export const VerVacunsApi = () => {
   const verVacunas = async (mascotas_id) =>{
     console.log(mascotas_id)
     try {
-    const result = await axios.get(`http://${LOCAL_HOST}:4321/carnet/datos-pdf/${mascotas_id}`); 
+    const result = await AXIOS.get(`/carnet/datos-pdf/${mascotas_id}`); 
     console.log('bansdderra')
     return result.data
 

@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { LOCAL_HOST } from '@env'
+import { AXIOS } from './api_connection';
 export const REGISTRO_USUARIO = async (data) => {
     try {
-        const response = await axios.post(`http://${LOCAL_HOST}:4321/registro`, {
+        const response = await AXIOS.post(`/registro`, {
             userCorreo: data.correo,
             userPassword: data.pass,
             userRol: data.rol,
@@ -19,7 +20,7 @@ export const REGISTRO_USUARIO = async (data) => {
 export const REGISTRO_CLIENTE = async (values) => {
     try {
         console.log(values.primer_apellido_cliente);
-        const response = await axios.post(`http://${LOCAL_HOST}:4321/registro/registro_cliente`, {
+        const response = await AXIOS.post(`/registro/registro_cliente`, {
             primer_nombre_cliente: values.primer_nombre_cliente,
             segundo_nombre_cliente: values.segundo_nombre_cliente,
             primer_apellido_cliente: values.primer_apellido_cliente,

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { LOCAL_HOST } from '@env'
+import { AXIOS } from './api_connection';
 
 export const VerHospitalizaciones = () => {
   const verHospitalizaciones = async (petId) =>{
     try {
-      const result =  await axios.get(`http://${LOCAL_HOST}:4321/hospitalizaciones/pet/${petId}`); 
+      const result =  await AXIOS.get(`/hospitalizaciones/pet/${petId}`); 
       return result.data
 
     } catch (error) {

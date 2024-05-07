@@ -1,9 +1,10 @@
 import axios from "axios";
 import { LOCAL_HOST } from '@env'
+import { AXIOS } from "./api_connection";
 export const ConectionData = async () => {
     const dataGenero = async () => {
         try {
-            const response = await axios.get(`http://${LOCAL_HOST}:4321/registro/genero`);
+            const response = await AXIOS.get(`/registro/genero`);
             return response.data;
         } catch (error) {
             console.log(error);
@@ -20,7 +21,7 @@ export const ConectionData = async () => {
 export const DataTypeDoc = async () => {
     const dataDoc = async () => {
         try {
-            const response = await axios.get(`http://${LOCAL_HOST}:4321/registro/documento`);
+            const response = await AXIOS.get(`/registro/documento`);
             return response.data;
         } catch (error) {
             console.log(error);
