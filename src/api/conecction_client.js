@@ -8,7 +8,6 @@ export const ConectionClient = () => {
       delete value.id_usuario
       await AXIOS.put(`/registro/actualizar_cliente/${value.id_cliente}`, {
         correo_usuario: correo,
-        contraseña: password,
         ...value
       })
       return ('Los datos han sido actualizados correctamente')
@@ -30,7 +29,7 @@ export const ConectionClient = () => {
 
   const updatePassword = async(correo,values) =>{
     try {
-      await AXIOS.patch(`/registro/actualizarPassword/${correo}`,values)
+      await AXIOS.patch(`/registro/actualizarPassword/${correo}`,{password: values.contraseña})
       return ('Contraseña actualizada correctamente')
     } catch (error) {
       console.log('Error al actualizar' + error)

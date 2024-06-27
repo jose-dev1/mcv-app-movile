@@ -17,7 +17,7 @@ const ActualizarViewModel = () => {
     primer_nombre_cliente:'',
     segundo_nombre_cliente:'',
     primer_apellido_cliente:'',
-    segundo_apeliido_cliente:'',
+    segundo_apellido_cliente:'',
     id_tipo_documento:'',
     numero_documento_cliente:'',
     lugar_expedicion_documento:'',
@@ -34,7 +34,7 @@ const ActualizarViewModel = () => {
         const userDataJSON = await getItem('user');
         const userData = JSON.parse(userDataJSON as any);
         const { update } = ConectionClient();
-        const updatedUserData = await update(values, userData.correo_usuario, userData.password_usuario);
+        const updatedUserData = await update(values, userData.correo_usuario);
         return updatedUserData;
     } catch (error) {
         console.error("Ocurrió un error al actualizar los datos del cliente:", error);

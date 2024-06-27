@@ -9,7 +9,7 @@ import CustomSelect from "../components/AppSelectDoc";
 interface Props extends StackScreenProps<PerfilStackParamList,'Actualizar'> { }
 
 export default function Actualizar({navigation,route}:Props) {
-  const {primer_nombre_cliente,segundo_nombre_cliente,primer_apellido_cliente,segundo_apeliido_cliente,id_tipo_documento,numero_documento_cliente, lugar_expedicion_documento,direccion_cliente,telefono_cliente, errorMessage ,onChange,actualizar} = ActualizarViewModel()
+  const {primer_nombre_cliente,segundo_nombre_cliente,primer_apellido_cliente,segundo_apellido_cliente,id_tipo_documento,numero_documento_cliente, lugar_expedicion_documento,direccion_cliente,telefono_cliente, errorMessage ,onChange,actualizar} = ActualizarViewModel()
   useEffect(()=>{
     if(errorMessage !== ''){
       ToastAndroid.show(errorMessage as any, ToastAndroid.LONG)
@@ -40,8 +40,8 @@ export default function Actualizar({navigation,route}:Props) {
           />
           <AppTextInput
             placeholder="Segundo Apellido"
-            value={segundo_apeliido_cliente} 
-            onChangeText={text => onChange('segundo_apeliido_cliente',text)}
+            value={segundo_apellido_cliente} 
+            onChangeText={text => onChange('segundo_apellido_cliente',text)}
             keyboardType='default' 
           />
           <CustomSelect
